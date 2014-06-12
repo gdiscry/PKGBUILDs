@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=PyCharm
-Icon=pycharm
+Name=PyCharm Professional
+Icon=pycharm-professional
 GenericName=Python and Django IDE
 Comment=Powerful Python and Django IDE. Professional version.
-Exec=/usr/bin/pycharm
+Exec=/usr/bin/pycharm-professional
 Terminal=false
 Type=Application
 Categories=Development;IDE; 
