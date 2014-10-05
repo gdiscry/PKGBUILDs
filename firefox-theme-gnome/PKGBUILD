@@ -1,0 +1,27 @@
+pkgname=firefox-theme-gnome
+pkgver=32.1
+_addons_file=275226
+_addons_name=gnome_3
+pkgrel=1
+pkgdesc="Adwaita theme for Firefox (Matches the default Gnome Shell theme)"
+url="https://addons.mozilla.org/en-US/firefox/addon/adwaita/"
+arch=('any')
+license=('MPL')
+depends=("firefox")
+makedepends=('unzip')
+#noextract=("${_addons_name}-${pkgver}-fx.xpi")
+source=("https://addons.mozilla.org/firefox/downloads/file/${_addons_file}/${_addons_name}-${pkgver}-fx-linux.xpi")
+md5sums=('d1f4011f6b5d3d3dcf309acee13cccfa')
+
+package() {
+  cd "${srcdir}"
+  rm -rf theme
+  unzip gnome_3-${pkgver}-fx-linux.xpi -d theme
+  local id=$(sed -n '/.*<em:id>\(.*\)<\/em:id>.*/{s//\1/p;q}' "${srcdir}/theme/install.rdf") || return 1
+  local dstdir="${pkgdir}/usr/lib/firefox/browser/extensions/${id}"
+  install -d "${dstdir}"
+  cp -a theme/* "${dstdir}"
+  find $dstdir -type d -exec chmod 0755 {} \;
+  find $dstdir -type f -exec chmod 0644 {} \;
+}
+
