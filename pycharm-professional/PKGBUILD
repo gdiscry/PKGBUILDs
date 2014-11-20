@@ -1,8 +1,8 @@
 # Maintainer: Georges Discry <georges@discry.be>
 
 pkgname=pycharm-professional
-pkgver=3.4.1
-pkgrel=1
+pkgver=4.0.1
+pkgrel=101
 pkgdesc="Powerful Python and Django IDE. Professional version."
 arch=('i686' 'x86_64')
 options=('!strip')
@@ -11,13 +11,18 @@ provides=('pycharm')
 license=('custom')
 depends=('java-runtime>=6'
          'python'
+         'python-coverage'
+         'ipython' 
+         'python2'
+         'python2-coverage'
+         'ipython2'
          'bash')
 backup=("opt/${pkgname}/bin/pycharm.vmoptions"
         "opt/${pkgname}/bin/pycharm64.vmoptions")
 changelog=ChangeLog
 source=("http://download.jetbrains.com/python/${pkgname}-${pkgver}.tar.gz"
         'pycharm-professional.desktop')
-sha256sums=('e4f85f3248e8985ac9f8c326543f979b47ba1d7ac6b128a2cf2b3eb8ec545d2b'
+sha256sums=('8413e1b5044b69eb4141cd3270d706292a23fee4e47de435007f8ab8cd83d213'
             '9b49e9747da180dbce763b9fd97ae6fd0e610950da9d5d3683e6a9c015b49196')
 
 prepare() {
